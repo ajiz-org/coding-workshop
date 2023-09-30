@@ -1,13 +1,6 @@
 import { APP_TEXT } from "app/Typography"
 import Button from "components/atoms/button"
 import { SectionNavigation } from "components/organisms/SectionNavigation/SectionNavigation"
-
-export interface CountDown {
-    days: number;
-    hours: number;
-    minutes: number;
-    seconds: number;
-}
 interface HeroSectionProps{
     countdown : CountDown
 }
@@ -29,7 +22,7 @@ export const HeadingSection = ({countdown}: HeroSectionProps) => {
           {Object.keys(countdown).map((key) => (
             <h3 className="md:text-2xl  lg:text:4xl sm:text-4xl text-2xl leading-none font-bold tracking-tight text-[#F1FAEE]">
               <span className="countdown font-mono sm:text-8xl text-3xl  w-full ">
-                <span style={{ "--value": countdown[key] }}></span>
+                <span style={{ "--value": countdown[key as keyof CountDown] } as React.CSSProperties}></span>
               </span>
               {key}
             </h3>
