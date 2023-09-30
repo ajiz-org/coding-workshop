@@ -1,1 +1,1 @@
-//TO:DO FINISH README PLEASE
+Techologies :  React , Vite , Typescript , TailwindCss  
