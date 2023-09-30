@@ -3,7 +3,7 @@ import { BsFacebook, BsGithub, BsInstagram } from 'react-icons/bs';
 
 export default function FooterWithSocialMediaIcons() {
   return (
-    <Footer container className='bg-transparent'>
+    <Footer container className='bg-transparent p-0'>
       <div className="w-full mb-10">
         <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
           <div>
@@ -17,7 +17,7 @@ export default function FooterWithSocialMediaIcons() {
             <div>
               <Footer.Title title="Email" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">
+                <Footer.Link className='text-[#F61B1F]' href="#">
                   contact@ajiz.org
                 </Footer.Link>
                 <Footer.Link href="#">
@@ -27,7 +27,7 @@ export default function FooterWithSocialMediaIcons() {
             <div>
               <Footer.Title title="Phone" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">
+                <Footer.Link href="#" className='text-[#F61B1F]'>
                   +216 54 10 90 90
                 </Footer.Link>
               </Footer.LinkGroup>
@@ -35,7 +35,7 @@ export default function FooterWithSocialMediaIcons() {
             <div>
               <Footer.Title title="Localisation" />
               <Footer.LinkGroup col>
-                <Footer.Link href="#">
+                <Footer.Link href="#" className='text-[#F61B1F]'>
                   CyberPark Zarzis 
                 </Footer.Link>
               </Footer.LinkGroup>

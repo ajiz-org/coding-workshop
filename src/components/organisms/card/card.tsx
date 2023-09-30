@@ -25,7 +25,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
     return (
       <div
         ref={ref}
-        className="bg-white bg-opacity-5 rounded-md shadow p-4 relative overflow-hidden h-full"
+        className="bg-white bg-opacity-5 rounded-md shadow p-4 relative overflow-hidden h-full mx-auto"
         {...rest}
       >
         <div>
@@ -34,7 +34,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           </span>
         </div>
         <div className="flex flex-col h-full">
-          <h3 className="text-2xl font-bold text-red-500">{title}</h3>
+          <h3 className="text-2xl font-bold text-[#F61B1F]">{title}</h3>
           <p className="mt-2 text-base text-[#F1FAEE] flex-1">{description}</p>
           <div className="pt-6">
             {children}
