@@ -30,7 +30,7 @@ export const HeadingSection = ({countdown}: HeroSectionProps) => {
         </div>
         <div className="max-w-screen-lg xl:max-w-screen-xl mx-auto py-4">
           <div className="sm:flex items-center">
-            <a href="https://github.com/jvidalv/vital">
+            <a href="https://github.com/ajiz-org">
               <Button>{APP_TEXT.register}</Button>
             </a>
           </div>
