@@ -16,8 +16,8 @@ interface FooterLink {
 const footerItems: FooterItem[] = [
   {
     title: "Email",
-    href: "mailto:contact@ajiz.org",
-    text: "contact@ajiz.org",
+    href: "mailto:coding@ajiz.org",
+    text: "coding@ajiz.org",
   },
   {
     title: "Phone",
