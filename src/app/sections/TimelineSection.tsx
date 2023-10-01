@@ -12,7 +12,7 @@ export const TimelineSection = () => {
       {TIMELINE_DATA.map(({ title, modules }, index) => (
         <div key={index} className="col-span-10 sm:col-span-5 mb-5">
           <Card
-            title={`Day ${index + 1}`}
+            title={`Day ${index + 1}: October ${index + 14}`}
             description={title}
             Icon={CalendarDaysIcon}
           >

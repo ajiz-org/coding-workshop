@@ -11,7 +11,7 @@ const pathname = "/game-of-secrets";
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
-  const finalDate = new Date("2023-10-07T13:30:00");
+  const finalDate = new Date("2023-10-14T13:30:00");
   const countdown = useCountdown(finalDate);
   const [registerExpanded, setRegisterExpanded] = useState(false);
 

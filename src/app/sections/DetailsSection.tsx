@@ -55,6 +55,10 @@ export const DetailsSection = () => {
               </code>
               , and unlock the mysteries of cryptography!
             </p>
+            <p className="mb-10 sm:mb-11 mt-2">
+              Participation Fee:{" "}
+              <code className="font-mono text-[#F61B1F] font-bold">10DT</code>.
+            </p>
           </div>
         </Card>
       </div>

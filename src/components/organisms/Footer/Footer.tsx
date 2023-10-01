@@ -21,8 +21,8 @@ const footerItems: FooterItem[] = [
   },
   {
     title: "Phone",
-    href: "tel:+21654109090",
-    text: "54 10 90 90",
+    href: "tel:+21620045571",
+    text: "20 04 55 71",
   },
   {
     title: "Localisation",

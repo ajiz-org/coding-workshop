@@ -62,7 +62,7 @@ export const TIMELINE_DATA: TimelineData[] = [
     modules: [
       {
         title: "Quick revision of the previous day.",
-        time: "14:00 - 15:30",
+        time: "13:30 - 14:00",
       },
       {
         title: "Third Iteration - Less trust in the bot.",
