@@ -1,1 +1,1 @@
-Techologies :  React , Vite , Typescript , TailwindCss  
+Techologies : React , Vite , Typescript , TailwindCss

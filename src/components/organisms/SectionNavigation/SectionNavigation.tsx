@@ -3,7 +3,7 @@ import {
   CalendarDaysIcon,
   PaperAirplaneIcon,
   QuestionMarkCircleIcon,
-  ArrowTopRightOnSquareIcon,
+  RocketLaunchIcon,
 } from "@heroicons/react/24/solid";
 
 interface NavigationList {
@@ -15,12 +15,12 @@ interface NavigationList {
 const navigationList: NavigationList[] = [
   {
     title: "Register",
-    href: "/register",
-    icon: <ArrowTopRightOnSquareIcon color="#F61B1F" className="h-5 w-5" />,
+    href: "#register",
+    icon: <RocketLaunchIcon color="#F61B1F" className="h-5 w-5" />,
   },
   {
     title: "Home",
-    href: "/",
+    href: "#home",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +55,11 @@ const navigationList: NavigationList[] = [
   },
 ];
 
-export const SectionNavigation = (props: ComponentProps<"ul">) => {
+export const SectionNavigation = (
+  props: ComponentProps<"ul"> & {
+    setRegisterExpanded: React.Dispatch<React.SetStateAction<boolean>>;
+  }
+) => {
   return (
     <ul
       className="menu bg-base-200 rounded-box fixed bottom-5 right-5 z-50 "
@@ -63,7 +67,12 @@ export const SectionNavigation = (props: ComponentProps<"ul">) => {
     >
       {navigationList.map(({ title, href, icon: Icon }, index) => (
         <li key={index}>
-          <a className="tooltip tooltip-left" data-tip={title} href={href}>
+          <a
+            className="tooltip tooltip-left"
+            onClick={index ? undefined : () => props.setRegisterExpanded(true)}
+            data-tip={title}
+            href={href}
+          >
             {Icon}
           </a>
         </li>

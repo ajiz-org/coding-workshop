@@ -5,6 +5,7 @@ interface FooterItem {
   title: string;
   href: string;
   text: string;
+  target?: "_blank";
 }
 
 interface FooterLink {
@@ -15,18 +16,19 @@ interface FooterLink {
 const footerItems: FooterItem[] = [
   {
     title: "Email",
-    href: "#",
+    href: "mailto:contact@ajiz.org",
     text: "contact@ajiz.org",
   },
   {
     title: "Phone",
-    href: "#",
+    href: "tel:+21654109090",
     text: "54 10 90 90",
   },
   {
     title: "Localisation",
-    href: "#",
+    href: "https://maps.app.goo.gl/hfP9iYxrYByEmQxj8",
     text: "CyberPark Zarzis",
+    target: "_blank",
   },
 ];
 
@@ -54,11 +56,15 @@ export default function FooterWithSocialMediaIcons() {
             <img alt="Ajiz Logo" src="/ajiz-logo.png" className="w-auto h-40" />
           </div>
           <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
-            {footerItems.map((item) => (
-              <div>
+            {footerItems.map((item, i) => (
+              <div key={i}>
                 <Footer.Title title={item.title} />
                 <Footer.LinkGroup col>
-                  <Footer.Link href="#" className="text-[#F61B1F]">
+                  <Footer.Link
+                    target={item.target}
+                    href={item.href}
+                    className="text-[#F61B1F]"
+                  >
                     {item.text}
                   </Footer.Link>
                 </Footer.LinkGroup>
@@ -70,12 +76,11 @@ export default function FooterWithSocialMediaIcons() {
         <div className="w-full sm:flex sm:items-center sm:justify-between">
           <Footer.Copyright
             by="Association des Jeunes Ingénieurs de Zarzis"
-            href="#"
             year={new Date().getFullYear()}
           />
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-            {footerLinks.map((link) => (
-              <Footer.Icon href={link.href} icon={link.icon} />
+            {footerLinks.map((link, i) => (
+              <Footer.Icon key={i} href={link.href} icon={link.icon} />
             ))}
           </div>
         </div>

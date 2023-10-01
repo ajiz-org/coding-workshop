@@ -3,11 +3,10 @@ import {
   ForwardRefExoticComponent,
   RefAttributes,
   SVGProps,
-  forwardRef
+  forwardRef,
 } from "react";
 
-export interface CardProps
-  extends Omit<ComponentProps<"div">, "className"> {
+export interface CardProps extends Omit<ComponentProps<"div">, "className"> {
   title: string;
   description: string;
   Icon: ForwardRefExoticComponent<
@@ -16,11 +15,10 @@ export interface CardProps
       titleId?: string | undefined;
     } & RefAttributes<SVGSVGElement>
   >;
-  href: string;
 }
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ title, description, Icon, href, children , ...rest }, ref) => {
+  ({ title, description, Icon, children, ...rest }, ref) => {
     return (
       <div
         ref={ref}
@@ -35,9 +33,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         <div className="flex flex-col h-full">
           <h3 className="text-2xl font-bold text-[#F61B1F]">{title}</h3>
           <p className="mt-2 text-base text-[#F1FAEE] flex-1">{description}</p>
-          <div className="pt-6">
-            {children}
-          </div>
+          <div className="pt-6">{children}</div>
         </div>
       </div>
     );

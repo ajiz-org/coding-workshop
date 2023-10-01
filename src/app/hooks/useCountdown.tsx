@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useCountdown = (finalDate: Date) => {
-    let timer : NodeJS.Timeout ; 
+  let timer: NodeJS.Timeout;
   // Calculate the initial time remaining
   const calculateTimeRemaining = () => {
     const now = new Date();

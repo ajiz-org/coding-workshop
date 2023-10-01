@@ -9,14 +9,14 @@ export default function EventTimeline({
   return (
     <Timeline className="w-full">
       {modules.map(({ title, time, subModuleTitles }, key) => (
-        <Timeline.Item {...{ key }}>
+        <Timeline.Item key={key}>
           <Timeline.Point />
           <Timeline.Content>
             <Timeline.Time className="text-red-500">{time}</Timeline.Time>
             <Timeline.Title className="text-[#F1FAEE]">{title}</Timeline.Title>
             <Timeline.Body>
               {subModuleTitles?.map((subModuleTitle, key) => (
-                <h3 {...{ key }}>{subModuleTitle}</h3>
+                <h3 key={key}>{subModuleTitle}</h3>
               ))}
             </Timeline.Body>
           </Timeline.Content>

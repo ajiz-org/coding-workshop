@@ -9,12 +9,7 @@ export const ContactSection = () => {
       className="px-4 max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4"
     >
       <div className="col-span-10 mb-5">
-        <Card
-          title={"Contact Us"}
-          description={""}
-          Icon={PaperAirplaneIcon}
-          href="/"
-        >
+        <Card title={"Contact Us"} description={""} Icon={PaperAirplaneIcon}>
           <FooterWithSocialMediaIcons />
         </Card>
       </div>
