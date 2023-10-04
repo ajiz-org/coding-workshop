@@ -17,7 +17,39 @@ interface HeroSectionProps {
   setRegisterExpanded: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const PlayerCard = ({ img }: { img: string }) => (
+type Player = {
+  img: string;
+  name: string;
+  role: string;
+  weapons: string[];
+};
+
+const players: Player[] = [
+  {
+    img: "/werewolf.png",
+    name: "Werewolves",
+    role: "Shape-shifting predators deceiving and eliminating villagers",
+    weapons: [
+      "Symetric Encryption (AES)",
+      "Message Authentication Code",
+      "Ephemeral keys",
+    ],
+  },
+  {
+    img: "/clairvoyant.png",
+    name: "Clairvoyant",
+    role: "Mystic seer revealing hidden identities",
+    weapons: ["Assymetric Encryption", "Hash based Signature", "MP 1-n OT"],
+  },
+  {
+    img: "/villager.png",
+    name: "Villagers",
+    role: "Innocent residents trying to survive",
+    weapons: ["Homeomorphic Signing", "Commitment Scheme", "Certification"],
+  },
+];
+
+const PlayerCard = ({ img, name, role, weapons }: Player) => (
   <Tilt
     glareEnable
     glareMaxOpacity={0.45}
@@ -38,11 +70,41 @@ const PlayerCard = ({ img }: { img: string }) => (
     <img
       src={img}
       style={{
+        position: "absolute",
         objectFit: "cover",
         height: "50vh",
         width: "40vh",
       }}
     />
+    <div
+      className="my-div"
+      style={{
+        position: "absolute",
+        objectFit: "cover",
+        height: "50vh",
+        width: "40vh",
+        background: "#000b",
+        color: "#fff",
+        padding: 30,
+        textAlign: "left",
+        display: "flex",
+      }}
+    >
+      <div className="flex center flex-col justify-between">
+        <h2 style={{ fontSize: "2em", textAlign: "center" }}>{name}</h2>
+        <p>
+          <strong>Role:</strong> {role}
+        </p>
+        <p style={{ marginTop: 20 }}>
+          <strong>Weapons:</strong>
+        </p>
+        <ul>
+          {weapons.map((w, i) => (
+            <li key={i}>{w}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
   </Tilt>
 );
 
@@ -103,22 +165,20 @@ export const HeadingSection = ({
             }}
           >
             <Carousel showThumbs={false} showStatus={false}>
-              {["/werewolf.png", "/clairvoyant.png", "/villager.png"].map(
-                (img, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      width: "100%",
-                      display: "flex",
-                      justifyContent: "center",
-                      height: "60vh",
-                      alignItems: "center",
-                    }}
-                  >
-                    <PlayerCard img={img} />
-                  </div>
-                )
-              )}
+              {players.map((player, i) => (
+                <div
+                  key={i}
+                  style={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
+                    height: "60vh",
+                    alignItems: "center",
+                  }}
+                >
+                  <PlayerCard {...player} />
+                </div>
+              ))}
             </Carousel>
           </div>
           <div
@@ -133,11 +193,9 @@ export const HeadingSection = ({
               justifyContent: "space-around",
             }}
           >
-            {["/werewolf.png", "/clairvoyant.png", "/villager.png"].map(
-              (img, i) => (
-                <PlayerCard img={img} key={i} />
-              )
-            )}
+            {players.map((player, i) => (
+              <PlayerCard {...player} key={i} />
+            ))}
           </div>
           <Particles
             id="tsparticles"
