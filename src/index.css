@@ -14,13 +14,15 @@
     }
   }
 
-
-  .my-hover:hover, .my-hover:hover>img {
-    opacity: .9 !important;
-  } 
-  .my-hover, .my-hover>* {
-    transition: opacity .1s ease;
-  } 
+  .my-hover:hover,
+  .my-hover:hover > img {
+    opacity: 0.95 !important;
+  }
+  .my-hover,
+  .my-hover > * {
+    opacity: 0.9;
+    transition: opacity 0.1s ease;
+  }
 
   main > :not([hidden]) ~ :not([hidden]) {
     --tw-space-y-reverse: 0;

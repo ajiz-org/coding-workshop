@@ -9,14 +9,43 @@ import Particles from "react-particles";
 import { loadSlim } from "tsparticles-slim"; // if you are going to use `loadSlim`, install the "tsparticles-slim" package too.
 import { useCallback } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
-
+import { Carousel } from "react-responsive-carousel";
 
 interface HeroSectionProps {
   countdown: CountDown;
   registerExpanded: boolean;
   setRegisterExpanded: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+const PlayerCard = ({ img }: { img: string }) => (
+  <Tilt
+    glareEnable
+    glareMaxOpacity={0.45}
+    scale={1.1}
+    style={{
+      border: "solid 1px rgba(255, 255, 255, 0.4)",
+      borderWidth: "1px  0 0 1px",
+      borderRadius: 10,
+      boxShadow: "rgba(0, 0, 0, 0.2) 6px 6px 8px",
+      display: "flex",
+      overflow: "hidden",
+      backdropFilter: "blur(10px)",
+      height: "50vh",
+      width: "40vh",
+    }}
+    className="my-hover"
+  >
+    <img
+      src={img}
+      style={{
+        objectFit: "cover",
+        height: "50vh",
+        width: "40vh",
+      }}
+    />
+  </Tilt>
+);
+
 export const HeadingSection = ({
   countdown,
   registerExpanded,
@@ -61,8 +90,7 @@ export const HeadingSection = ({
               width: "100%",
             }}
           />
-
-<div
+          <div
             className="lg:hidden flex"
             style={{
               position: "absolute",
@@ -74,45 +102,25 @@ export const HeadingSection = ({
               justifyContent: "space-around",
             }}
           >
-            <Carousel  showThumbs={false} showStatus={false} >
-            {["/werewolf.png", "/clairvoyant.png", "/villager.png"].map(
-              (img, i) => (
-                <div key={i} style={{width:'100%', display: 'flex', justifyContent: 'center', height: '60vh', alignItems: 'center'}}>
-                <Tilt
-                  
-                  glareEnable
-                  glareMaxOpacity={0.45}
-                  scale={1.1}
-                  style={{
-                    border: "solid 1px rgba(255, 255, 255, 0.4)",
-                    borderWidth: "1px  0 0 1px",
-                    borderRadius: 10,
-                    boxShadow: "rgba(0, 0, 0, 0.2) 6px 6px 8px",
-                    display: "flex",
-                    overflow: "hidden",
-                    backdropFilter: "blur(10px)",
-                    opacity: 0.8,
-                  height: "50vh",
-                    width: "40vh",
-                  }}
-                  className="my-hover"
+            <Carousel showThumbs={false} showStatus={false}>
+              {["/werewolf.png", "/clairvoyant.png", "/villager.png"].map(
+                (img, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "center",
+                      height: "60vh",
+                      alignItems: "center",
+                    }}
                   >
-                    <img
-                      src={img}
-                      style={{
-                        objectFit: "cover",
-                        opacity: 0.8,
-                        height: "50vh",
-                        width: "40vh",
-                      }}
-                    />
-                </Tilt>
-                </div>
-              )
-            )}
+                    <PlayerCard img={img} />
+                  </div>
+                )
+              )}
             </Carousel>
           </div>
-
           <div
             className="hidden lg:flex"
             style={{
@@ -127,35 +135,7 @@ export const HeadingSection = ({
           >
             {["/werewolf.png", "/clairvoyant.png", "/villager.png"].map(
               (img, i) => (
-                <Tilt
-                  key={i}
-                  glareEnable
-                  glareMaxOpacity={0.45}
-                  scale={1.1}
-                  style={{
-                    border: "solid 1px rgba(255, 255, 255, 0.4)",
-                    borderWidth: "1px  0 0 1px",
-                    borderRadius: 10,
-                    boxShadow: "rgba(0, 0, 0, 0.2) 6px 6px 8px",
-                    display: "flex",
-                    overflow: "hidden",
-                    backdropFilter: "blur(10px)",
-                    opacity: 0.8,
-                  height: "50vh",
-                    width: "40vh",
-                  }}
-                  className="my-hover"
-                  >
-                    <img
-                      src={img}
-                      style={{
-                        objectFit: "cover",
-                        opacity: 0.8,
-                        height: "50vh",
-                        width: "40vh",
-                      }}
-                    />
-                </Tilt>
+                <PlayerCard img={img} key={i} />
               )
             )}
           </div>
@@ -164,7 +144,7 @@ export const HeadingSection = ({
             init={particlesInit}
             options={{
               fullScreen: false,
-              style: { height: "60vh" },
+              style: { height: "55vh" },
               fpsLimit: 120,
               particles: {
                 color: {
