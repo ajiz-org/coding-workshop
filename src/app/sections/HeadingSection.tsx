@@ -62,8 +62,8 @@ const PlayerCard = ({ img, name, role, weapons }: Player) => (
       display: "flex",
       overflow: "hidden",
       backdropFilter: "blur(10px)",
-      height: "50vh",
-      width: "40vh",
+      height: 370,
+      width: 296,
     }}
     className="my-hover"
   >
@@ -72,8 +72,8 @@ const PlayerCard = ({ img, name, role, weapons }: Player) => (
       style={{
         position: "absolute",
         objectFit: "cover",
-        height: "50vh",
-        width: "40vh",
+        height: 370,
+        width: 296,
       }}
     />
     <div
@@ -81,8 +81,8 @@ const PlayerCard = ({ img, name, role, weapons }: Player) => (
       style={{
         position: "absolute",
         objectFit: "cover",
-        height: "50vh",
-        width: "40vh",
+        height: 370,
+        width: 296,
         background: "#000b",
         color: "#fff",
         padding: 30,
@@ -172,7 +172,7 @@ export const HeadingSection = ({
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
-                    height: "60vh",
+                    height: 444,
                     alignItems: "center",
                   }}
                 >
@@ -202,7 +202,7 @@ export const HeadingSection = ({
             init={particlesInit}
             options={{
               fullScreen: false,
-              style: { height: "55vh" },
+              style: { height: "407px"  },
               fpsLimit: 120,
               particles: {
                 color: {

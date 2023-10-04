@@ -32,7 +32,7 @@
   }
   .my-hover > .my-div > div {
     opacity: 0;
-    transform: translateY(50vh);
+    transform: translateY(370px);
     transition: transform 0.4s ease-in, opacity 0.4s cubic-bezier(0, 1, 1, 1);
   }
   .my-hover:hover > .my-div > div {
