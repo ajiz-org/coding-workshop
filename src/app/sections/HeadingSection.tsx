@@ -49,11 +49,12 @@ const players: Player[] = [
   },
 ];
 
-const PlayerCard = ({ img, name, role, weapons }: Player) => (
+const PlayerCard = ({ img, name, role, weapons, ang }: Player & {ang?: number}) => (
   <Tilt
     glareEnable
     glareMaxOpacity={0.45}
     scale={1.1}
+    tiltAngleYInitial={ang}
     style={{
       border: "solid 1px rgba(255, 255, 255, 0.4)",
       borderWidth: "1px  0 0 1px",
@@ -194,7 +195,7 @@ export const HeadingSection = ({
             }}
           >
             {players.map((player, i) => (
-              <PlayerCard {...player} key={i} />
+              <PlayerCard {...player} ang={(i-1)*20} key={i} />
             ))}
           </div>
           <Particles
