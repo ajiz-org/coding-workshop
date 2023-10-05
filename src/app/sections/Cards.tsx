@@ -1,5 +1,6 @@
 import { Carousel } from "react-responsive-carousel";
 import { Player, PlayerCard } from "./PlayCard";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 
 const players: Player[] = [
   {
