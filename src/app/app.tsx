@@ -13,7 +13,7 @@ function App() {
   const navigate = useNavigate();
   const finalDate = new Date("2023-10-14T13:30:00");
   const countdown = useCountdown(finalDate);
-  const [registerExpanded, setRegisterExpanded] = useState(false);
+  const [registerExpanded, setRegisterExpanded] = useState(true);
 
   useEffect(() => {
     if (location.pathname !== pathname) {

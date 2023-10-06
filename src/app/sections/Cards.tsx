@@ -1,6 +1,6 @@
 import { Carousel } from "react-responsive-carousel";
 import { Player, PlayerCard } from "./PlayCard";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; 
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const players: Player[] = [
   {
@@ -45,7 +45,12 @@ export default () => {
           justifyContent: "space-around",
         }}
       >
-        <Carousel showThumbs={false} showStatus={false}>
+        <Carousel
+          showThumbs={false}
+          showStatus={false}
+          preventMovementUntilSwipeScrollTolerance
+          swipeScrollTolerance={50}
+        >
           {players.map((player, i) => (
             <div
               key={i}
@@ -57,7 +62,7 @@ export default () => {
                 alignItems: "center",
               }}
             >
-              <PlayerCard {...player} />
+              <PlayerCard {...player} notilt />
             </div>
           ))}
         </Carousel>

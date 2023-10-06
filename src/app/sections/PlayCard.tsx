@@ -55,8 +55,12 @@ const CardContent = ({ img, name, role, weapons, b64 }: Player) => (
   </>
 );
 
-export const PlayerCard = ({ ang, ...player }: Player & { ang?: number }) => (
-  <Tilt ang={ang}>
+export const PlayerCard = ({
+  ang,
+  notilt,
+  ...player
+}: Player & { ang?: number; notilt?: boolean }) => (
+  <Tilt {...{ ang, notilt }}>
     <CardContent {...player} />
   </Tilt>
 );

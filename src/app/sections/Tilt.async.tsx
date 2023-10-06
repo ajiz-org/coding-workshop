@@ -9,13 +9,18 @@ const style = (ang: number): React.CSSProperties => ({
 export default ({
   children,
   ang = 0,
+  notilt,
 }: {
   children: React.ReactNode;
   ang?: number;
+  notilt?: boolean;
 }) => {
-  const props = { ang, style: style(ang), className: "my-hover", children };
-  return (
-    <Suspense fallback={<div {...props} />}>
+  const props = { ang, style: style(ang), className: "my-hover", children },
+    div = <div {...props} />;
+  return notilt ? (
+    div
+  ) : (
+    <Suspense fallback={div}>
       <Tilt {...props} />
     </Suspense>
   );
