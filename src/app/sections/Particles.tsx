@@ -15,7 +15,7 @@ export default () => {
       options={{
         fullScreen: false,
         style: { height: "444px" },
-        fpsLimit: 120,
+        fpsLimit: 30,
         particles: {
           color: {
             value: "#ffffff",

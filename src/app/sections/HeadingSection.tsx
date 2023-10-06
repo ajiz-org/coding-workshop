@@ -48,9 +48,11 @@ export const HeadingSection = ({
           />
 
           <Cards />
-          <Suspense>
-            <Particles />
-          </Suspense>
+          {navigator.hardwareConcurrency >= 4 && (
+            <Suspense>
+              <Particles />
+            </Suspense>
+          )}
         </div>
       </div>
       <div className="flex py-4">

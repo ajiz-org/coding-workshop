@@ -1,6 +1,5 @@
-import { Carousel } from "react-responsive-carousel";
 import { Player, PlayerCard } from "./PlayCard";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import React, { Suspense, lazy, useEffect, useRef, useState } from "react";
 
 const players: Player[] = [
   {
@@ -30,59 +29,51 @@ const players: Player[] = [
   },
 ];
 
+const style: React.CSSProperties = {
+  position: "absolute",
+  right: 0,
+  bottom: 0,
+  width: "100%",
+  height: "100%",
+  alignItems: "center",
+  justifyContent: "space-around",
+};
+
+const Carousel = lazy(() => import("./Carousel"));
+
+const lg = (): "lg" | "" => (window.innerWidth >= 1024 ? "lg" : "");
+const useWidth = () => {
+  const [width, setWidth] = useState(lg);
+  const ref = useRef<"lg" | "">(width);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const w = lg();
+      if (ref.current !== w) setWidth((ref.current = w));
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return width;
+};
+
 export default () => {
-  return (
-    <>
-      <div
-        className="lg:hidden flex"
-        style={{
-          position: "absolute",
-          right: 0,
-          bottom: 0,
-          width: "100%",
-          height: "100%",
-          alignItems: "center",
-          justifyContent: "space-around",
-        }}
-      >
-        <Carousel
-          showThumbs={false}
-          showStatus={false}
-          preventMovementUntilSwipeScrollTolerance
-          swipeScrollTolerance={50}
-        >
-          {players.map((player, i) => (
-            <div
-              key={i}
-              style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "center",
-                height: 444,
-                alignItems: "center",
-              }}
-            >
-              <PlayerCard {...player} notilt />
-            </div>
-          ))}
-        </Carousel>
-      </div>
-      <div
-        className="hidden lg:flex"
-        style={{
-          position: "absolute",
-          right: 0,
-          bottom: 0,
-          width: "100%",
-          height: "100%",
-          alignItems: "center",
-          justifyContent: "space-around",
-        }}
-      >
-        {players.map((player, i) => (
-          <PlayerCard {...player} ang={(i - 1) * 20} key={i} />
-        ))}
-      </div>
-    </>
+  const lg = useWidth() === "lg";
+  return lg ? (
+    <div className="flex" style={style}>
+      {players.map((player, i) => (
+        <PlayerCard {...player} ang={(i - 1) * 20} key={i} />
+      ))}
+    </div>
+  ) : (
+    <div className="flex" style={style}>
+      <Suspense fallback={<PlayerCard {...players[0]} notilt />}>
+        <Carousel players={players} />
+      </Suspense>
+    </div>
   );
 };
