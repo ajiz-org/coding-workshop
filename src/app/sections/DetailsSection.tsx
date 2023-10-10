@@ -2,6 +2,36 @@ import { QuestionMarkCircleIcon } from "@heroicons/react/24/solid";
 import Card from "components/organisms/card";
 
 export const DetailsSection = () => {
+  const content: string[][] = [
+    [
+      "Embark on a journey where we, ",
+      "developers",
+      ", ",
+      "enthusiasts",
+      ", and ",
+      "curious minds",
+      ", come together to form a vibrant, new community. ",
+    ],
+    [
+      "Our first workshop invites you to explore and co-create a decentralized werewolves game, blending ",
+      "learning",
+      " and ",
+      "entertainment",
+      " in a unique, collaborative setting. ",
+    ],
+    [
+      "This isn’t just an event; it’s the ",
+      "starting point",
+      " of a series where we'll dive into various ",
+      "technological",
+      " and ",
+      "developmental themes",
+      ", all through a hands-on, enjoyable approach. ",
+    ],
+    [
+      "Let’s navigate, learn, and build together, shaping a community where every member is a vital piece of the puzzle!",
+    ],
+  ];
   return (
     <section
       id="details"
@@ -9,52 +39,27 @@ export const DetailsSection = () => {
     >
       <div className="col-span-10 mb-5">
         <Card
-          title={"Cryptographic Foundations Workshop"}
+          title={"Game of Secrets: A Start to a Series of Journeys"}
           description={""}
           Icon={QuestionMarkCircleIcon}
         >
           <div className="max-w-screen-lg text-lg sm:text-xl  text-gray-300 font-medium ">
-            <p className="mb-10 sm:mb-11 mt-2">
-              This{" "}
-              <code className="font-mono text-[#F61B1F] font-bold">
-                Workshop
-              </code>{" "}
-              is a part of a series curated by our{" "}
-              <code className="font-mono text-[#F61B1F] font-bold">
-                developers community
-              </code>
-              . Our aim is to foster knowledge exchange and collaboration among
-              its members.
-            </p>
-            <p className="mb-10 sm:mb-11 mt-2">
-              Dive into the world of cryptography from the ground up, using an
-              engaging{" "}
-              <code className="font-mono text-[#F61B1F] font-bold">
-                game-centric approach
-              </code>
-              .
-            </p>
-            <p className="mb-10 sm:mb-11 mt-2">
-              Participants will embark on a journey to construct the{" "}
-              <code className="font-mono text-[#F61B1F] font-bold">
-                first-ever decentralized werewolves game
-              </code>
-              , ensuring a comprehensive exploration of fundamental{" "}
-              <code className="font-mono text-[#F61B1F] font-bold">
-                cryptographic
-              </code>{" "}
-              concepts.
-            </p>
-            <p className="mb-10 sm:mb-11 mt-2">
-              <code className="font-mono text-[#F61B1F] font-bold">
-                Join us
-              </code>{" "}
-              in this unique blend of{" "}
-              <code className="font-mono text-[#F61B1F] font-bold">
-                education and entertainment
-              </code>
-              , and unlock the mysteries of cryptography!
-            </p>
+            {content.map((c, i) => (
+              <p className="mb-10 sm:mb-11 mt-2" key={i}>
+                {c.map((c, i) =>
+                  i & 1 ? (
+                    <code
+                      className="font-mono text-[#F61B1F] font-bold"
+                      key={i}
+                    >
+                      {c}
+                    </code>
+                  ) : (
+                    <span key={i}>{c}</span>
+                  )
+                )}
+              </p>
+            ))}
           </div>
         </Card>
       </div>
