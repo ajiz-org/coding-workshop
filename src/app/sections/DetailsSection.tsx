@@ -4,7 +4,7 @@ import Card from "components/organisms/card";
 export const DetailsSection = () => {
   const content: string[][] = [
     [
-      "Embark on a journey where we, ",
+      "Step into an adventure where we, ",
       "developers",
       ", ",
       "enthusiasts",
@@ -49,7 +49,7 @@ export const DetailsSection = () => {
                 {c.map((c, i) =>
                   i & 1 ? (
                     <code
-                      className="font-mono text-[#F61B1F] font-bold"
+                      className="font-bold text-red-500 underline"
                       key={i}
                     >
                       {c}
