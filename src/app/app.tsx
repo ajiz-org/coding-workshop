@@ -5,9 +5,10 @@ import { HeadingSection } from "./sections/HeadingSection";
 import { TimelineSection } from "./sections/TimelineSection";
 import { RegisterSection } from "./sections/RegisterSection";
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation, Route, Routes } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { pathname } from "./routes";
+import "../index.css";
 
-const pathname = "/game-of-secrets";
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -33,11 +34,4 @@ function App() {
   );
 }
 
-export default function () {
-  return (
-    <Routes>
-      <Route path={pathname} element={<App />}></Route>
-      <Route path="*" element={<App />}></Route>
-    </Routes>
-  );
-}
+export default App;
