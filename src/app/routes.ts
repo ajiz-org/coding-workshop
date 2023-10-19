@@ -1,1 +1,1 @@
-export const pathname = "/game-of-secrets";
+export const pathname = "/rabbit-mq";

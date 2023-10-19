@@ -1,5 +1,5 @@
 export const APP_TEXT = {
-  title: "Game Of Secrets",
+  title: "Coding Workshops",
   register: "Register Now !",
 };
 
@@ -14,85 +14,75 @@ export interface TimelineData {
 
 export const TIMELINE_DATA: TimelineData[] = [
   {
-    title: "Day 1: Introduction and First Iterations",
+    title: "",
     modules: [
       {
-        title: "Introduction to Cryptography",
-        time: "13:30 - 14:30",
+        title: "Introduction to Software Processing Models",
+        time: "13:30 - 14:00",
         subModuleTitles: [
-          "-What is cryptography?",
-          "-Why is cryptography important? (Web 3.0, ...)",
-          "-Other uses of cryptography (Git, P2P, ...)",
-          "-Quick Demonstrations: SSH, password generation, ...",
+          "- Definition of processing models",
+          "- Synchronous Processing (Sync)",
+          "- Asynchronous Processing (Async)",
+          "- Example",
         ],
       },
       {
-        title: "First Iteration - Everything is monitored by a bot.",
-        time: "14:30 - 15:30",
+        title: "Benefits of Async Processing.",
+        time: "14:00 - 14:30",
         subModuleTitles: [
-          "-Clear communication.",
-          "-Common secret sharing.",
-          "-Introduction to HMAC for authentication.",
-          "-Role assignment by the bot.",
-          "-Introduction to symmetric encryption (AES).",
-          "-Full execution of the first version of the game",
+          "- Reducing the time to wait.",
+          "- Parallelism & Concurrency.",
+          "- Failure isolation and system recovery.",
         ],
       },
       {
-        title: "Break",
-        time: "15:30 - 16:00",
-      },
-      {
-        title: "Second Iteration - Less trust in the platform.",
-        time: "16:00 - 17:30",
+        title: "Message Queues.",
+        time: "14:30 - 13:30",
         subModuleTitles: [
-          "-Introduction to asymmetric schemes (RSA).",
-          "-Message signing and verification.",
-          "-Introduction to certification.",
+          "- Understanding Message Queues.",
+          "- The Role of Message Queues in Async Processing.",
+          "- Decoupled Communication.",
+          "- Benefits of Decoupled Communication.",
+          "- Reliability and Message Persistence.",
+          "- Easier scalability.",
+          "- Backpressure on services.",
         ],
-      },
-      {
-        title: "Discussion, questions and answers.",
-        time: "17:30 - 18:00",
       },
     ],
   },
   {
-    title: "Day 2: Advanced Iterations and Practical Game",
+    title: '',
     modules: [
-      {
-        title: "Quick revision of the previous day.",
-        time: "13:30 - 14:00",
-      },
-      {
-        title: "Third Iteration - Less trust in the bot.",
-        time: "14:00 - 15:30",
-        subModuleTitles: [
-          "-Creation of secret identities.",
-          "-Multi-party Coin Tossing for random role assignment.",
-          "-Introduction to hybrid encryption.",
-        ],
-      },
       {
         title: "Break",
         time: "15:30 - 16:00",
       },
       {
-        title: "Fourth Iteration - Addition of the seer.",
-        time: "16:00 - 17:30",
+        title: "RabbitMQ as a Message Broker.",
+        time: "16:00 - 17:00",
         subModuleTitles: [
-          "-Introduction to hash-based signing.",
-          "-Ephemeral keys for communication between the wolves.",
-          "-Multi Part Oblivious Transfer (1-n) for the seer.",
-          "-Full execution of the final version of the game",
+          "- RabbitMQ core components.",
+          "- Installing the RabbitMQ library.",
+          "- Hands-on learning by building small projects:",
+          "- a. Hello World app",
+          "- b. Distributed Task Queue",
+          "- c. Implementing the PUB/SUB pattern",
+          "- d. Routing messages and exploring RabbitMQ exchanges",
         ],
       },
       {
-        title: "Discussion, questions, answers",
-        time: "17:30 - 18:00",
+        title: "Introducing a problem to solve with RabbitMQ.",
+        time: "17:00 - 17:30",
         subModuleTitles: [
-          "-Lead into the Next Session: develop a deployable version on private blockchains (with smart contract)",
+          "- Distributed systems challenges.",
+          "- Designing a solution to work on top of RabbitMQ infrastructure.",
+          "- Implementing the solution",
+          "- Alternatives to use",
         ],
+      },
+      {
+        title: "Q&A Session.",
+        time: "17:30 - 18:00",
       },
     ],
   },

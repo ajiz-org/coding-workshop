@@ -1,11 +1,7 @@
 import { APP_TEXT } from "app/Typography";
 import Button from "components/atoms/button";
 import { SectionNavigation } from "components/organisms/SectionNavigation/SectionNavigation";
-import { Suspense, lazy } from "react";
 
-import Cards from "./Cards";
-
-const Particles = lazy(() => import("./Particles"));
 interface HeroSectionProps {
   countdown: CountDown;
   registerExpanded: boolean;
@@ -29,31 +25,8 @@ export const HeadingSection = ({
       <h1 className="text-5xl md:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight py-4 text-[#F61B1F]">
         {APP_TEXT.title.toUpperCase()}
       </h1>
-      <div
-        className="bg-white bg-opacity-5 rounded-md shadow p-4 relative overflow-hidden h-full md:mt-8"
-        style={{
-          backdropFilter: "blur(2px)",
-        }}
-      >
-        <div className="relative" style={{ height: 444 }}>
-          <img
-            src="/numbers.png"
-            style={{
-              filter: "contrast(0) opacity(0.1)",
-              position: "absolute",
-              right: "-20px",
-              bottom: "-20px",
-              width: "100%",
-            }}
-          />
-
-          <Cards />
-          {navigator.hardwareConcurrency >= 4 && (
-            <Suspense>
-              <Particles />
-            </Suspense>
-          )}
-        </div>
+      <div className="my-4 flex justify-center" style={{background: 'url(bg.png)'}}>
+        <img src="/banner.jpg" />
       </div>
       <div className="flex py-4">
         {Object.keys(countdown).map((key) => (

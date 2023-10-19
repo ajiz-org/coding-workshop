@@ -32,7 +32,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
         </div>
         <div className="flex flex-col h-full">
           <h3 className="text-2xl font-bold text-[#F61B1F]">{title}</h3>
-          <p className="mt-2 text-base text-[#F1FAEE] flex-1">{description}</p>
+          {description && <p className="mt-2 text-base text-[#F1FAEE] flex-1">{description}</p>}
           <div className="pt-6">{children}</div>
         </div>
       </div>

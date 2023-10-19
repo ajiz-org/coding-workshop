@@ -24,8 +24,7 @@ export const RegisterSection = () => {
       headers: {
         "Content-Type": "application/json",
         "X-Access-Key":
-          "$2a$10$5JQPk1iGQdB2.tCRpWhjyeXkn3CLLloWnXUAf6hnXIOaumxbwOO8S",
-        "X-Collection-Id": "6519650e12a5d3765985b71d",
+          "$2a$10$bEj4dtdhq0TeQje3U8IBUOU7rCzdjwpLFqfw3pQiQuE9gB9e/DfYO",
       },
       body: JSON.stringify(user),
     })

@@ -4,32 +4,28 @@ import Card from "components/organisms/card";
 export const DetailsSection = () => {
   const content: string[][] = [
     [
-      "Step into an adventure where we, ",
-      "developers",
-      ", ",
-      "enthusiasts",
-      ", and ",
-      "curious minds",
-      ", come together to form a vibrant, new community. ",
+      'Dive into the realm of "',
+      "Asynchronous Processing with RabbitMQ",
+      '", where we uncover the magic of ',
+      "message queues",
+      " together.",
     ],
     [
-      "Our first workshop invites you to explore and co-create a decentralized werewolves game, blending ",
-      "learning",
-      " and ",
-      "entertainment",
-      " in a unique, collaborative setting. ",
+      "Through ",
+      "hands-on projects",
+      ", delve into RabbitMQ's ",
+      "core components",
+      ", engaging in a practical exploration of asynchronous communication.",
     ],
     [
-      "This isn’t just an event; it’s the ",
-      "starting point",
-      " of a series where we'll dive into various ",
-      "technological",
-      " and ",
-      "developmental themes",
-      ", all through a hands-on, enjoyable approach. ",
+      "This session propels our communal journey further, blending ",
+      "tech discovery",
+      " with collaborative learning, as we shape a ",
+      "lively and engaging",
+      " workshop series together.",
     ],
     [
-      "Let’s navigate, learn, and build together, shaping a community where every member is a vital piece of the puzzle!",
+      "Together, we'll unlock new dimensions of asynchronous processing, forging a community enriched by every shared insight and creation",
     ],
   ];
   return (
@@ -39,7 +35,7 @@ export const DetailsSection = () => {
     >
       <div className="col-span-10 mb-5">
         <Card
-          title={"Game of Secrets: A Start to a Series of Journeys"}
+          title={"Asynchronous Processing with RabbitMQ"}
           description={""}
           Icon={QuestionMarkCircleIcon}
         >
@@ -48,10 +44,7 @@ export const DetailsSection = () => {
               <p className="mb-10 sm:mb-11 mt-2" key={i}>
                 {c.map((c, i) =>
                   i & 1 ? (
-                    <code
-                      className="font-bold text-red-500 underline"
-                      key={i}
-                    >
+                    <code className="font-bold text-red-500 underline" key={i}>
                       {c}
                     </code>
                   ) : (
