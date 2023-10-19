@@ -12,7 +12,7 @@ import "../index.css";
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
-  const finalDate = new Date("2023-10-21T13:30:00");
+  const finalDate = new Date("2023-10-28T13:30:00");
   const countdown = useCountdown(finalDate);
   const [registerExpanded, setRegisterExpanded] = useState(true);
 
