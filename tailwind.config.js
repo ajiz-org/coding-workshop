@@ -1,5 +1,5 @@
 module.exports = {
-  darkMode: ['class'],
+  darkMode: ["class"],
   content: [
     "./src/**/*.tsx",
     "./src/**/*.css",
@@ -74,7 +74,7 @@ module.exports = {
   plugins: [
     require("@tailwindcss/forms"),
     require("flowbite/plugin"),
-    require("tailwindcss-animate"), 
+    require("tailwindcss-animate"),
     require("daisyui"),
   ],
 };

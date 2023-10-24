@@ -25,7 +25,10 @@ export const HeadingSection = ({
       <h1 className="text-5xl md:text-6xl lg:text-7xl leading-none font-extrabold tracking-tight py-4 text-[#F61B1F]">
         {APP_TEXT.title.toUpperCase()}
       </h1>
-      <div className="my-4 flex justify-center" style={{background: 'url(bg.png)'}}>
+      <div
+        className="my-4 flex justify-center"
+        style={{ background: "url(bg.png)" }}
+      >
         <img src="/banner.jpg" />
       </div>
       <div className="flex py-4">

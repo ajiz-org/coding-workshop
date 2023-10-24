@@ -9,14 +9,23 @@ export const TimelineSection = () => {
       id="timeline"
       className="px-4 max-w-screen-lg xl:max-w-screen-xl mx-auto grid grid-cols-10 gap-4"
     >
-      {TIMELINE_DATA.map(({ title, modules }, index) => (
+      {TIMELINE_DATA.map((ss, index) => (
         <div key={index} className="col-span-10 sm:col-span-5 mb-5">
           <Card
-            title={`Session ${index + 1}: October 21`}
-            description={title}
+            title={`Session ${1 + index}: October 28`}
+            description=""
             Icon={CalendarDaysIcon}
           >
-            <EventTimeline {...{ modules }} />
+            {ss.map(({ title, modules }, index) => (
+              <>
+                {title && (
+                  <h3 className="text-2xl font-bold mb-6 text-[#F61B1F]">
+                    {title}
+                  </h3>
+                )}
+                <EventTimeline key={index} {...{ modules }} />
+              </>
+            ))}
           </Card>
         </div>
       ))}
