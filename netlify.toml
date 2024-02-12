@@ -1,4 +1,15 @@
 [[redirects]]
+  from = "/junior"
+  to = "https://forms.gle/junGuNmeaYyi7cVi8"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/junior"
+  to = "https://forms.gle/junGuNmeaYyi7cVi8"
+  status = 301
+
