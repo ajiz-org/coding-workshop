@@ -82,6 +82,7 @@ export const surveyJson = {
           "title": "Nom et Prénom",
           "cellType": "text",
           "placeholder": "Nom et Prénom",
+          "isRequired": true,
           "isUnique": true
          },
          {
@@ -89,16 +90,19 @@ export const surveyJson = {
           "title": "Numéro de téléphone",
           "cellType": "text",
           "inputType": "tel",
+          "isRequired": true,
           "placeholder": "(+216) 12 345 678"
          },
          {
           "name": "Email",
           "title": "Email",
           "cellType": "text",
+          "isRequired": true,
           "inputType": "email",
           "placeholder": "user@example.com"
          },
          {
+          "isRequired": true,
           "name": "birth-date",
           "title": "Date de naissance",
           "cellType": "text",
