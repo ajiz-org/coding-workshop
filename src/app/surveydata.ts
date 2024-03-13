@@ -1,7 +1,7 @@
 export const surveyJson = {
     "title": "ZARZIS ROBOTS 2.0",
     "description": "CYBER PARC ZARZIS",
-    "logo": "/logo.png",
+    "logo": "/ajiz-logo.png",
     "logoWidth": "auto",
     "logoHeight": "80",
     "completedHtml": "<div style=\"max-width:688px;text-align:center;margin: 16px auto;\">\n\n<div style=\"padding:0 24px;\">\n<h4>Votre inscription a été retenue.</h4>\n<br>\n<p>Nous allons vous contacter bientôt.</p>\n</div>\n\n</div>\n",

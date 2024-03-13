@@ -7,11 +7,15 @@ body, html {
 }
 .sd-question.sd-question--table {
     background: white;
-    padding: 0 30px 10px;
+    padding: 0 40px 20px;
 }
 
 .sd-body.sd-body.sd-body--static {
-    max-width: 902px;
+    max-width: 922px;
+}
+.sd-body.sd-body.sd-body--static {
+    max-width: 940px !important;
+    margin: 30px auto 10px;
 }
 
 .sd-container-modern {
