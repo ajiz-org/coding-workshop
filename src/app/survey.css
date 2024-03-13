@@ -1,0 +1,25 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+#root {
+    display: contents;
+}
+.sd-question.sd-question--table {
+    background: white;
+    padding: 0 30px 10px;
+}
+
+.sd-body.sd-body.sd-body--static {
+    max-width: 902px;
+}
+
+.sd-container-modern {
+    max-width: 992px;
+    margin: 20px auto;
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+}
+.sd-body.sd-body.sd-body--static {
+    padding: 20px 0;
+}

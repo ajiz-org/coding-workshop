@@ -1,37 +1,32 @@
-import { useCountdown } from "./hooks/useCountdown";
-import { ContactSection } from "./sections/ContactSection";
-import { DetailsSection } from "./sections/DetailsSection";
-import { HeadingSection } from "./sections/HeadingSection";
-import { TimelineSection } from "./sections/TimelineSection";
-import { RegisterSection } from "./sections/RegisterSection";
-import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-import { pathname } from "./routes";
-import "../index.css";
+import { useCallback, useMemo } from "react";
 
+import "survey-core/defaultV2.min.css";
+import { Model, SurveyModel } from "survey-core";
+import { Survey } from "survey-react-ui";
+import { surveyJson } from "./surveydata";
+import "survey-core/i18n/french";
+import { theme } from "./theme";
+import "./survey.css";
 function App() {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const finalDate = new Date("2023-10-28T13:30:00");
-  const countdown = useCountdown(finalDate);
-  const [registerExpanded, setRegisterExpanded] = useState(true);
+  const alertResults = useCallback(async (sender: SurveyModel) => {
+    const results = JSON.stringify(sender.data);
+    await fetch(
+      "https://eu-west-2.aws.data.mongodb-api.com/app/application-0-nyecz/endpoint/register",
+      { method: "POST", body: results }
+    );
+    sender.doComplete();
+  }, []);
 
-  useEffect(() => {
-    if (location.pathname !== pathname) {
-      navigate(pathname);
-    }
-  }, [location.pathname, navigate]);
-  return (
-    <main>
-      <HeadingSection
-        {...{ countdown, registerExpanded, setRegisterExpanded }}
-      />
-      {registerExpanded && <RegisterSection />}
-      <DetailsSection />
-      <TimelineSection />
-      <ContactSection />
-    </main>
-  );
+  const survey = useMemo(() => {
+    const survey = new Model(surveyJson);
+    survey.focusFirstQuestionAutomatic = false;
+    survey.locale = "fr";
+    survey.applyTheme(theme);
+    survey.onComplete.add(alertResults);
+    return survey;
+  }, [alertResults]);
+
+  return <Survey model={survey} />;
 }
 
 export default App;

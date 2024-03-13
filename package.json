@@ -61,6 +61,8 @@
     "react-particles": "^2.12.2",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.16.0",
+    "survey-core": "^1.9.134",
+    "survey-react-ui": "^1.9.134",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "tsparticles-engine": "^2.12.0",
