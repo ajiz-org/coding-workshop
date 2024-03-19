@@ -10,11 +10,14 @@ import "./survey.css";
 function App() {
   const alertResults = useCallback(async (sender: SurveyModel) => {
     const results = JSON.stringify(sender.data);
-    await fetch(
+    const res = await fetch(
       "https://eu-west-2.aws.data.mongodb-api.com/app/application-0-nyecz/endpoint/register",
       { method: "POST", body: results }
     );
-    sender.doComplete();
+    if (res.status === 200) sender.doComplete();
+    else if (confirm('Une erreur est survenue, voulez vous contacter 26 405 096 ?')) {
+      open('tel:+21626405096')
+    }
   }, []);
 
   const survey = useMemo(() => {
