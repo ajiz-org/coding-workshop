@@ -119,7 +119,7 @@ export const surveyJson = {
          5
         ],
         "cellType": "text",
-        "rowCount": 1,
+        "rowCount": 3,
         "minRowCount": 1,
         "maxRowCount": 3,
         "addRowText": "Ajouter un autre participant",

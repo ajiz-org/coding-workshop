@@ -27,3 +27,11 @@ body, html {
 .sd-body.sd-body.sd-body--static {
     padding: 20px 0;
 }
+
+#sv-nav-complete>*::after {
+    display: block;
+    content: "au cas d'erreur merci d'appeler 26 405 096";
+    padding: 0 10px;
+    color: white;
+    text-shadow: 0px 1px 4px black;
+}
