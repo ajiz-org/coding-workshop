@@ -129,7 +129,7 @@ export const surveyJson = {
        {
         "type": "dropdown",
         "name": "payment",
-        "isRequired": true,
+        "isRequired": false,
         "title": "Méthode de Paiement",
         "choices": [
          {
