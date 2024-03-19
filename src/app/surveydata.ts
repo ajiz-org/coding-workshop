@@ -129,7 +129,6 @@ export const surveyJson = {
        {
         "type": "dropdown",
         "name": "payment",
-        "isRequired": false,
         "title": "Méthode de Paiement",
         "choices": [
          {
@@ -161,7 +160,16 @@ export const surveyJson = {
         "title": "D17",
         "readOnly": true,
         "html": "<strong>Merci de noter notre D17 pour effectuer le paiement:</strong> <p>26405096</p>"
-       }
+       },
+       {
+        "name": "accept",
+        "title": "Confirmation",
+        "type": "checkbox",
+        "isRequired": true,
+        "choices": [
+            "Je confirme ma participation"
+           ]
+        },
       ]
      }
     ],
