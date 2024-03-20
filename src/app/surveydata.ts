@@ -107,7 +107,7 @@ export const surveyJson = {
           "title": "Date de naissance",
           "cellType": "text",
           "inputType": "date",
-          "min": "2006-01-01",
+          "min": "2004-01-01",
           "max": "2018-01-01"
          }
         ],
