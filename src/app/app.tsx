@@ -1,12 +1,14 @@
 import { useCallback, useMemo } from "react";
 
-import "survey-core/defaultV2.min.css";
+
 import { Model, ServerValidateQuestionsEvent, SurveyModel } from "survey-core";
-import { Survey } from "survey-react-ui";
-import { surveyJson } from "./surveydata";
+import "survey-core/defaultV2.min.css";
 import "survey-core/i18n/french";
-import { theme } from "./theme";
+import { Survey } from "survey-react-ui";
 import "./survey.css";
+import { surveyJson } from "./surveydata";
+import { theme } from "./theme";
+
 function App() {
   const alertResults = useCallback(
     async (sender: SurveyModel, options: ServerValidateQuestionsEvent) => {
@@ -18,17 +20,17 @@ function App() {
         );
         if (res.status === 200) sender.doComplete();
         else throw new Error();
-        options.complete()
+        options.complete();
       } catch {
         options.errors = {
-          "accept": "Erreur inconnue"
-        }
+          accept: "Erreur inconnue",
+        };
         if (
           confirm("Une erreur est survenue, voulez vous contacter 26 405 096 ?")
         ) {
           open("tel:+21626405096");
         }
-        options.complete()
+        options.complete();
       }
     },
     []
