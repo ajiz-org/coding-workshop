@@ -142,13 +142,13 @@ function App() {
                 placeholder="Name"
                 autoComplete="off"
                 value={name}
-                autoFocus
                 disabled
               />
             </div>
             <Input
               id="message"
               placeholder="Type your message..."
+              autoFocus
               className="flex-1"
               autoComplete="off"
               value={input}
