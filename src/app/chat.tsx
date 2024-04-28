@@ -17,9 +17,10 @@ import { useLocation } from "react-router-dom";
 
 function App() {
   const [input, setInput] = React.useState("");
-  const [name, setName] = React.useState("");
   const inputLength = input.trim().length;
-  const channel = useLocation().pathname.slice(1);
+  const query = new URLSearchParams(useLocation().search);
+  const channel = query.get('room') || 'ajiz'
+  const name = query.get('user') || 'anonymous'
   type MessageData = {
     id: string;
     timestamp: number;
@@ -142,7 +143,7 @@ function App() {
                 autoComplete="off"
                 value={name}
                 autoFocus
-                onChange={(event) => setName(event.target.value)}
+                disabled
               />
             </div>
             <Input
