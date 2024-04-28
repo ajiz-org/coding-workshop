@@ -13,10 +13,13 @@ import {
 import { Input } from "../components/ui/input";
 import { ThemeProvider } from "../components/theme-provider/theme-provider";
 import "../chat.css";
+import { useLocation } from "react-router-dom";
 
 function App() {
   const [input, setInput] = React.useState("");
+  const [name, setName] = React.useState("");
   const inputLength = input.trim().length;
+  const channel = useLocation().pathname.slice(1);
   type MessageData = {
     id: string;
     timestamp: number;
@@ -32,9 +35,8 @@ function App() {
   const scrollRef = React.useRef<HTMLDivElement>(null);
   const [currentTry, nextTry] = React.useReducer((s) => s + 1, 0);
 
-  const chatroomTitle = "#GAME OF SECRETS CHATROOM";
-  const eventSourceString =
-    "https://realtime.ably.io/sse?v=1.2&channels=channel1&key=qRXQpA.YkOXtw:fTxs7siJ5I131E1krpPdpZiDf0Vx2Hrx3xx_D1cqyxk";
+  const chatroomTitle = "#" + channel;
+  const eventSourceString = `https://realtime.ably.io/sse?v=1.2&channels=${channel}&key=qRXQpA.YkOXtw:fTxs7siJ5I131E1krpPdpZiDf0Vx2Hrx3xx_D1cqyxk`;
   React.useEffect(() => {
     scrollRef.current?.lastElementChild?.scrollIntoView();
   }, [messages]);
@@ -71,10 +73,10 @@ function App() {
     waiting.current = Promise.resolve(waiting.current)
       .then(async () => {
         const res = await fetch(
-          "https://rest.ably.io/channels/channel1/messages",
+          `https://rest.ably.io/channels/${channel}/messages`,
           {
             method: "POST",
-            body: JSON.stringify({ name: "msg", data: input }),
+            body: JSON.stringify({ name: "msg", data: `${name}:${input}` }),
             headers: {
               "Content-Type": "application/json",
               Authorization:
@@ -102,21 +104,28 @@ function App() {
           </div>
         </CardHeader>
         <CardContent className="grow overflow-y-auto space-y-4" ref={scrollRef}>
-          {messages.map((message) => (
-            <div
-              key={message.id}
-              className={cn(
-                "flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm",
-                "bg-muted",
-                "whitespace-pre",
-                message.mine
-                  ? "ml-auto bg-primary text-primary-foreground"
-                  : "bg-muted"
-              )}
-            >
-              {message.data}
-            </div>
-          ))}
+          {messages.map((message) => {
+            const nameIdx = message.data.indexOf(":");
+            return (
+              <div key={message.id}>
+                {!message.mine && (
+                  <span>{message.data.slice(0, nameIdx)}</span>
+                )}
+                <div
+                  className={cn(
+                    "flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm",
+                    "bg-muted",
+                    "whitespace-pre",
+                    message.mine
+                      ? "ml-auto bg-primary text-primary-foreground"
+                      : "bg-muted"
+                  )}
+                >
+                  {message.data.slice(nameIdx + 1)}
+                </div>
+              </div>
+            );
+          })}
         </CardContent>
         <CardFooter>
           <form
@@ -126,6 +135,16 @@ function App() {
             }}
             className="flex w-full items-center space-x-2"
           >
+            <div>
+              <Input
+                id="name"
+                placeholder="Name"
+                autoComplete="off"
+                value={name}
+                autoFocus
+                onChange={(event) => setName(event.target.value)}
+              />
+            </div>
             <Input
               id="message"
               placeholder="Type your message..."
