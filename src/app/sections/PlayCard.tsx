@@ -3,34 +3,29 @@ import Tilt from "./Tilt.async";
 export type Player = {
   img: string;
   name: string;
-  role: string;
-  weapons: string[];
-  b64?: string;
+  price: number;
+  gamme?: string;
+  products?: { n?: number; name: string }[];
 };
 
 const imgSt: React.CSSProperties = {
   position: "absolute",
   objectFit: "cover",
   height: 370,
-  width: 296,
+  width: 370,
 };
 
-const CardContent = ({ img, name, role, weapons, b64 }: Player) => (
+const CardContent = ({ img, name, price, gamme, products }: Player) => (
   <>
-    <img
-      src={`data:image/jpeg;base64,${b64}`}
-      style={{ ...imgSt, filter: "blur(20px)", overflow: "hidden" }}
-    />
-    <img src={`/${img}.jpg`} style={imgSt} />
-    <img src={`/${img}.png`} style={imgSt} />
+    <img src={img} style={imgSt} />
     <div
       className="my-div"
       style={{
         position: "absolute",
         objectFit: "cover",
         height: 370,
-        width: 296,
-        background: "#000b",
+        width: 370,
+        background: "#aaa6",
         color: "#fff",
         padding: 30,
         textAlign: "left",
@@ -39,17 +34,25 @@ const CardContent = ({ img, name, role, weapons, b64 }: Player) => (
     >
       <div className="flex center flex-col justify-between">
         <h2 style={{ fontSize: "2em", textAlign: "center" }}>{name}</h2>
+        {gamme && (
+          <p>
+            <strong>Gamme:</strong> {gamme}
+          </p>
+        )}
         <p>
-          <strong>Role:</strong> {role}
+          <strong>Prix:</strong> {price} DT
         </p>
-        <p style={{ marginTop: 20 }}>
-          <strong>Weapons:</strong>
-        </p>
-        <ul>
-          {weapons.map((w, i) => (
-            <li key={i}>{w}</li>
-          ))}
-        </ul>
+        {products && <p style={{ marginTop: 20 }}>
+          <strong>Articles :</strong>
+        </p>}
+        {products && (
+          <ul>
+            {products.map((w, i) => (
+              <li key={i}>{w.n ?? 1} {w.name}</li>
+            ))}
+          </ul>
+        )}
+        <p style={{ marginTop: 20 }}></p>
       </div>
     </div>
   </>

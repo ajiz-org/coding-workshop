@@ -19,8 +19,8 @@ function App() {
   const [input, setInput] = React.useState("");
   const inputLength = input.trim().length;
   const query = new URLSearchParams(useLocation().search);
-  const channel = query.get('room') || 'ajiz'
-  const name = query.get('user') || 'anonymous'
+  const channel = query.get("room") || "ajiz";
+  const name = query.get("user") || "anonymous";
   type MessageData = {
     id: string;
     timestamp: number;
@@ -41,36 +41,7 @@ function App() {
   React.useEffect(() => {
     scrollRef.current?.lastElementChild?.scrollIntoView();
   }, [messages]);
-  React.useEffect(() => {
-    running.current = true;
-    const sse = new EventSource(eventSourceString, { withCredentials: true });
-    async function getRealtimeData(data: MessageData) {
-      await waiting.current;
-      setMessages((prev) => {
-        const id = data.id.slice(0, -2);
-
-        if (pending.current.has(id)) {
-          pending.current.delete(id);
-          data.mine = true;
-        }
-        return [...prev, data];
-      });
-    }
-    sse.onmessage = (e) => getRealtimeData(JSON.parse(e.data));
-    sse.onerror = () => {
-      const isRunning = running.current;
-      sse.close();
-      if (!isRunning) return;
-      nextTry();
-    };
-    return () => {
-      running.current = false;
-      sse.close();
-    };
-  }, [currentTry]);
-  const send = async () => {
-    if (inputLength === 0) return;
-    setInput("");
+  const sendText = React.useCallback( (input: string) => {
     waiting.current = Promise.resolve(waiting.current)
       .then(async () => {
         const res = await fetch(
@@ -91,6 +62,43 @@ function App() {
       .catch(() => {
         alert("Network Error");
       });
+  }, [channel, name]);
+  React.useEffect(() => {
+    running.current = true;
+    const sse = new EventSource(eventSourceString, { withCredentials: true });
+    async function getRealtimeData(data: MessageData) {
+      await waiting.current;
+      setMessages((prev) => {
+        const id = data.id.slice(0, -2);
+
+        if (pending.current.has(id)) {
+          pending.current.delete(id);
+          data.mine = true;
+        } 
+        if (!data.mine && name.startsWith("elapsed-")) {
+          setTimeout(() => sendText(data.data), 1000 * +name.slice("elapsed-".length));
+        }
+        return [...prev, data];
+      });
+    }
+    console.log('setting ..', currentTry, name, sendText, eventSourceString)
+    sse.onmessage = (e) => getRealtimeData(JSON.parse(e.data));
+    sse.onerror = () => {
+      const isRunning = running.current;
+      sse.close();
+      if (!isRunning) return;
+      nextTry();
+    };
+    return () => {
+      running.current = false;
+      sse.close();
+    };
+  }, [currentTry, name, sendText, eventSourceString]);
+
+  const send = () => {
+    if (inputLength === 0) return;
+    setInput("");
+    sendText(input);
   };
   return (
     <main>
@@ -109,9 +117,7 @@ function App() {
             const nameIdx = message.data.indexOf(":");
             return (
               <div key={message.id}>
-                {!message.mine && (
-                  <span>{message.data.slice(0, nameIdx)}</span>
-                )}
+                {!message.mine && <span>{message.data.slice(0, nameIdx)}</span>}
                 <div
                   className={cn(
                     "flex w-max max-w-[75%] flex-col gap-2 rounded-lg px-3 py-2 text-sm",
