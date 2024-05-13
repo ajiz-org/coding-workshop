@@ -61,7 +61,8 @@ const Product = ({ product }: { product: Product }) => {
 export default function () {
   return (
     <main>
-      <div
+      <Link
+        to={"/"}
         style={{
           background: "#e0d2c5",
           display: "flex",
@@ -73,7 +74,7 @@ export default function () {
       >
         <img width={"200px"} src="/pictures/logo.jpg"></img>
         EPO-BEAUTY&COSMETIC
-      </div>
+      </Link>
       <Routes>
         <Route path="/" element={<App />}></Route>
         {all.map((x) => (
