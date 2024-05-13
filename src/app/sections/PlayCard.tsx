@@ -42,17 +42,31 @@ const CardContent = ({ img, name, price, gamme, products }: Player) => (
         <p>
           <strong>Prix:</strong> {price} DT
         </p>
-        {products && <p style={{ marginTop: 20 }}>
-          <strong>Articles :</strong>
-        </p>}
+        {products && (
+          <p style={{ marginTop: 20 }}>
+            <strong>Articles :</strong>
+          </p>
+        )}
         {products && (
           <ul>
             {products.map((w, i) => (
-              <li key={i}>{w.n ?? 1} {w.name}</li>
+              <li key={i}>
+                {w.n ?? 1} {w.name}
+              </li>
             ))}
           </ul>
         )}
-        <p style={{ marginTop: 20 }}></p>
+        <p
+          style={{
+            marginTop: 20,
+            background: "#872121",
+            padding: 7,
+            textAlign: "center",
+            borderRadius: 20,
+          }}
+        >
+          Acheter maintenant
+        </p>
       </div>
     </div>
   </>
