@@ -40,9 +40,14 @@ const Product = ({ product }: { product: Product }) => {
     <div style={{ color: "black" }}>
       <img
         src={`/pictures/${product.pic}`}
-        style={{ width: "100%", maxWidth: 500, float: "inline-start" }}
+        style={{
+          width: "100%",
+          maxWidth: 500,
+          float: "inline-start",
+          margin: 20,
+        }}
       />
-      <h1>
+      <h1 style={{ margin: 20 }}>
         <strong>{product.name}</strong>
       </h1>
       <p>{product.desc}</p>
