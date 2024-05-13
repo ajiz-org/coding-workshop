@@ -17,7 +17,12 @@ export const gammes = f({
     }
 })
 
-export const products: { id: string, gamme: keyof typeof gammes, name: string, desc: string, price: number, pic: string, n?: number }[] = [{
+export type Product = {
+    id: string, gamme: keyof typeof gammes, name: string,
+    desc: string, price: number, pic: string, n?: number
+}
+
+export const products: Product[] = [{
     id: 'anti-pelliculaire',
     gamme: 'brise-marine',
     name: 'Après-shampooing Anti-pelliculaire',
@@ -68,3 +73,9 @@ export const products: { id: string, gamme: keyof typeof gammes, name: string, d
     price: 20,
     gamme: 'brise-marine',
 }]
+
+
+export const all = [
+    ...Object.entries(gammes).map(([id, v]) => ({ ...v, id })),
+    ...products,
+]
