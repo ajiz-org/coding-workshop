@@ -67,7 +67,7 @@ function App() {
       running.current = false;
       sse.close();
     };
-  }, [currentTry]);
+  }, [currentTry, eventSourceString]);
   const send = async () => {
     if (inputLength === 0) return;
     setInput("");
